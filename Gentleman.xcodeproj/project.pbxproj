@@ -9,22 +9,26 @@
 /* Begin PBXBuildFile section */
 		4E9EA1CD1FF174EFD8B70774 /* Pods_Gentleman.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056DE00765C1707AF40FD549 /* Pods_Gentleman.framework */; };
 		AD68F19321EA37870035CD81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD68F19221EA37870035CD81 /* AppDelegate.swift */; };
-		AD68F19521EA37870035CD81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD68F19421EA37870035CD81 /* ViewController.swift */; };
 		AD68F19821EA37880035CD81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD68F19621EA37880035CD81 /* Main.storyboard */; };
 		AD68F19A21EA378B0035CD81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD68F19921EA378B0035CD81 /* Assets.xcassets */; };
 		AD68F19D21EA378B0035CD81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD68F19B21EA378B0035CD81 /* LaunchScreen.storyboard */; };
+		ADB53E1C21EAE50A00A8ECB2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB53E1B21EAE50A00A8ECB2 /* LoginVC.swift */; };
+		ADB53E1F21EAE53200A8ECB2 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB53E1E21EAE53200A8ECB2 /* SignupVC.swift */; };
+		ADB53E2121EAE55500A8ECB2 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB53E2021EAE55500A8ECB2 /* ResetPasswordVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		056DE00765C1707AF40FD549 /* Pods_Gentleman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gentleman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD68F18F21EA37870035CD81 /* Gentleman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gentleman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD68F19221EA37870035CD81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AD68F19421EA37870035CD81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AD68F19721EA37880035CD81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD68F19921EA378B0035CD81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD68F19C21EA378B0035CD81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD68F19E21EA378B0035CD81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADB53E1721EADF4A00A8ECB2 /* Gentleman-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gentleman-Bridging-Header.h"; sourceTree = "<group>"; };
+		ADB53E1B21EAE50A00A8ECB2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		ADB53E1E21EAE53200A8ECB2 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		ADB53E2021EAE55500A8ECB2 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		D3A0C7F41101ED92E67D3ACC /* Pods-Gentleman.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gentleman.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gentleman/Pods-Gentleman.release.xcconfig"; sourceTree = "<group>"; };
 		FC2BA0C397C5C7868509DB0D /* Pods-Gentleman.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gentleman.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gentleman/Pods-Gentleman.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,15 +74,25 @@
 		AD68F19121EA37870035CD81 /* Gentleman */ = {
 			isa = PBXGroup;
 			children = (
-				ADB53E1721EADF4A00A8ECB2 /* Gentleman-Bridging-Header.h */,
 				AD68F19221EA37870035CD81 /* AppDelegate.swift */,
-				AD68F19421EA37870035CD81 /* ViewController.swift */,
+				ADB53E1721EADF4A00A8ECB2 /* Gentleman-Bridging-Header.h */,
+				ADB53E1D21EAE51300A8ECB2 /* Login and Signup */,
 				AD68F19621EA37880035CD81 /* Main.storyboard */,
 				AD68F19921EA378B0035CD81 /* Assets.xcassets */,
 				AD68F19B21EA378B0035CD81 /* LaunchScreen.storyboard */,
 				AD68F19E21EA378B0035CD81 /* Info.plist */,
 			);
 			path = Gentleman;
+			sourceTree = "<group>";
+		};
+		ADB53E1D21EAE51300A8ECB2 /* Login and Signup */ = {
+			isa = PBXGroup;
+			children = (
+				ADB53E1B21EAE50A00A8ECB2 /* LoginVC.swift */,
+				ADB53E1E21EAE53200A8ECB2 /* SignupVC.swift */,
+				ADB53E2021EAE55500A8ECB2 /* ResetPasswordVC.swift */,
+			);
+			path = "Login and Signup";
 			sourceTree = "<group>";
 		};
 		E4E9543E896E0DCBE1869DB6 /* Pods */ = {
@@ -219,8 +233,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD68F19521EA37870035CD81 /* ViewController.swift in Sources */,
+				ADB53E1F21EAE53200A8ECB2 /* SignupVC.swift in Sources */,
+				ADB53E1C21EAE50A00A8ECB2 /* LoginVC.swift in Sources */,
 				AD68F19321EA37870035CD81 /* AppDelegate.swift in Sources */,
+				ADB53E2121EAE55500A8ECB2 /* ResetPasswordVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
