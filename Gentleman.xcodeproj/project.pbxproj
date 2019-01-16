@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4E9EA1CD1FF174EFD8B70774 /* Pods_Gentleman.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056DE00765C1707AF40FD549 /* Pods_Gentleman.framework */; };
+		AD0300C421EEFA6B003E4E3A /* TextCounterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0300C321EEFA6B003E4E3A /* TextCounterLabel.swift */; };
+		AD0300C721EF1477003E4E3A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0300C621EF1477003E4E3A /* HomeViewController.swift */; };
 		AD68F19321EA37870035CD81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD68F19221EA37870035CD81 /* AppDelegate.swift */; };
 		AD68F19821EA37880035CD81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD68F19621EA37880035CD81 /* Main.storyboard */; };
 		AD68F19A21EA378B0035CD81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD68F19921EA378B0035CD81 /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		056DE00765C1707AF40FD549 /* Pods_Gentleman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gentleman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD0300C321EEFA6B003E4E3A /* TextCounterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCounterLabel.swift; sourceTree = "<group>"; };
+		AD0300C621EF1477003E4E3A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AD68F18F21EA37870035CD81 /* Gentleman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gentleman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD68F19221EA37870035CD81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD68F19721EA37880035CD81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,6 +57,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AD0300C521EEFA72003E4E3A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AD0300C321EEFA6B003E4E3A /* TextCounterLabel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		AD68F18621EA37870035CD81 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +88,8 @@
 			children = (
 				AD68F19221EA37870035CD81 /* AppDelegate.swift */,
 				ADB53E1721EADF4A00A8ECB2 /* Gentleman-Bridging-Header.h */,
+				AD0300C621EF1477003E4E3A /* HomeViewController.swift */,
+				AD0300C521EEFA72003E4E3A /* Model */,
 				ADB53E1D21EAE51300A8ECB2 /* Login and Signup */,
 				AD68F19621EA37880035CD81 /* Main.storyboard */,
 				AD68F19921EA378B0035CD81 /* Assets.xcassets */,
@@ -186,6 +200,7 @@
 				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloudCrashReporting/AVOSCloudCrashReporting.framework",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloudIM/AVOSCloudIM.framework",
+				"${BUILT_PRODUCTS_DIR}/GrowingTextView/GrowingTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
@@ -196,6 +211,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloudCrashReporting.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloudIM.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GrowingTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
@@ -236,7 +252,9 @@
 				ADB53E1F21EAE53200A8ECB2 /* SignupVC.swift in Sources */,
 				ADB53E1C21EAE50A00A8ECB2 /* LoginVC.swift in Sources */,
 				AD68F19321EA37870035CD81 /* AppDelegate.swift in Sources */,
+				AD0300C421EEFA6B003E4E3A /* TextCounterLabel.swift in Sources */,
 				ADB53E2121EAE55500A8ECB2 /* ResetPasswordVC.swift in Sources */,
+				AD0300C721EF1477003E4E3A /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

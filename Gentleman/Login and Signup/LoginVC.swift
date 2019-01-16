@@ -1,6 +1,7 @@
 import UIKit
 import AVOSCloud
 import AVOSCloudIM
+import SVProgressHUD
 
 class LoginVC: UIViewController {
 
@@ -30,7 +31,7 @@ class LoginVC: UIViewController {
                 
         // TODO: 页面布局
         let width = self.view.frame.width
-        let height = self.view.frame.height
+        
         gentlemanImage.frame = CGRect(x: width / 2 - 90, y: 80, width: 180, height: 180)
         usernameText.frame = CGRect(x: 15, y: gentlemanImage.frame.origin.y + 200, width: width - 30, height: 30)
         passwordText.frame = CGRect(x: 15, y: usernameText.frame.origin.y + 40, width: width - 30, height: 30)
@@ -51,20 +52,38 @@ class LoginVC: UIViewController {
             return
         }
         
+        SVProgressHUD.show()
+        
         // TODO: 用户登录
-        AVUser.logInWithUsername(inBackground: usernameText.text!, password: passwordText.text!) { (user: AVUser?, error: Error?) in
+        AVUser.logInWithUsername(inBackground: usernameText.text!.uppercased(), password: passwordText.text!) { (user: AVUser?, error: Error?) in
             if error == nil {
                 //记住用户
                 UserDefaults.standard.set(user!.username, forKey: "username")
                 UserDefaults.standard.synchronize()
-                
+
+                SVProgressHUD.dismiss()
+
                 //从AppDelegate.swift中调用login方法，让用户直接进入主界面
                 let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.login()
             }
             else {
+                SVProgressHUD.dismiss()
                 print("登录发生错误！")
-                self.alert(error: "错误", message: "信息填写有误或用户不存在！")
+                
+                let str = error!.localizedDescription as NSString
+                if str == "Email address isn't verified." {
+                    self.alert(error: "错误", message: "您还没有验证您的邮箱。为了您的账户安全，请先登录您的邮箱进行验证！")
+                }
+                else if str == "The username and password mismatch." {
+                    self.alert(error: "错误", message: "密码填写错误！")
+                }
+                else if str == "Could not find user." {
+                    self.alert(error: "错误", message: "用户不存在！")
+                }
+                else{
+                    self.alert(error: "错误", message: "\(error!.localizedDescription)")
+                }
             }
         }
     }
