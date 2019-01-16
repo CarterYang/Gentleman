@@ -35,7 +35,7 @@ class LoginVC: UIViewController {
         gentlemanImage.frame = CGRect(x: width / 2 - 90, y: 80, width: 180, height: 180)
         usernameText.frame = CGRect(x: 15, y: gentlemanImage.frame.origin.y + 200, width: width - 30, height: 30)
         passwordText.frame = CGRect(x: 15, y: usernameText.frame.origin.y + 40, width: width - 30, height: 30)
-        forgetPasswordButton.frame = CGRect(x: 15, y: passwordText.frame.origin.y + 30, width: width - 30, height: 20)
+        forgetPasswordButton.frame = CGRect(x: width - 65, y: passwordText.frame.origin.y + 30, width: 50, height: 20)
         loginButton.frame = CGRect(x: 15, y: forgetPasswordButton.frame.origin.y + 30, width: 150, height: 30)
         signupButton.frame = CGRect(x: width - 165, y: forgetPasswordButton.frame.origin.y + 30, width: 150, height: 30)
     }

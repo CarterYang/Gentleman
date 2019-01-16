@@ -15,7 +15,7 @@ class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var confirmPasswordText: UITextField!
     @IBOutlet weak var bioText: GrowingTextView!
-    @IBOutlet weak var counter: textCounterLabel!
+    @IBOutlet weak var counter: TextCounterLabel!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
 
@@ -218,7 +218,6 @@ class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                 let ok = UIAlertAction(title: "OK", style: .cancel, handler: { (UIAlertAction) in
                     self.dismiss(animated: true, completion: nil)
                 })
-                //let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(ok)
                 self.present(alert, animated: true, completion: nil)
             }
