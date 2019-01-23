@@ -3,15 +3,20 @@ import AVOSCloud
 import AVOSCloudIM
 import SVProgressHUD
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, UIPopoverPresentationControllerDelegate {
 
-    @IBOutlet weak var gentlemanImage: UIImageView!
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var instructionLabel: UITextView!
+    @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var usernameText: UITextField!
+    @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var passwordText: UITextField!
-    @IBOutlet weak var forgetPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var forgetPassword: UIButton!
+    @IBOutlet weak var signup: UIButton!
     
+    let appDelegateSource = UIApplication.shared.delegate as! AppDelegate
     
     /////////////////////////////////////////////////////////////////////////////////
     // MARK: 屏幕初始化
@@ -26,18 +31,26 @@ class LoginVC: UIViewController {
         self.view.addGestureRecognizer(hideKeyboardTap)
         
         // TODO: 页面修饰
+        titleLabel.font = UIFont(name: "Pacifico", size: 40)
+        instructionLabel.text = "请输入您的用户名和密码！\n 如果您刚完成注册，请先登录您的邮箱完成验证！"
+        instructionLabel.isUserInteractionEnabled = false
         loginButton.layer.cornerRadius = loginButton.frame.height / 6
-        signupButton.layer.cornerRadius = signupButton.frame.height / 6
+        loginButton.backgroundColor = appDelegateSource.hexStringToUIColor(hex: "1D97C1")
                 
         // TODO: 页面布局
         let width = self.view.frame.width
+        let height = self.view.frame.height
         
-        gentlemanImage.frame = CGRect(x: width / 2 - 90, y: 80, width: 180, height: 180)
-        usernameText.frame = CGRect(x: 15, y: gentlemanImage.frame.origin.y + 200, width: width - 30, height: 30)
-        passwordText.frame = CGRect(x: 15, y: usernameText.frame.origin.y + 40, width: width - 30, height: 30)
-        forgetPasswordButton.frame = CGRect(x: width - 65, y: passwordText.frame.origin.y + 30, width: 50, height: 20)
-        loginButton.frame = CGRect(x: 15, y: forgetPasswordButton.frame.origin.y + 30, width: 150, height: 30)
-        signupButton.frame = CGRect(x: width - 165, y: forgetPasswordButton.frame.origin.y + 30, width: 150, height: 30)
+        backgroundImage.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        titleLabel.frame = CGRect(x: 15, y: 100, width: width - 30, height: 50)
+        instructionLabel.frame = CGRect(x: 15, y: titleLabel.frame.origin.y + 100, width: width - 30, height: 40)
+        accountLabel.frame = CGRect(x: 15, y: instructionLabel.frame.origin.y + 60, width: 50, height: 40)
+        usernameText.frame = CGRect(x: 70, y: instructionLabel.frame.origin.y + 60, width: width - 85, height: 40)
+        passwordLabel.frame = CGRect(x: 15, y: accountLabel.frame.origin.y + 50, width: 50, height: 40)
+        passwordText.frame = CGRect(x: 70, y: usernameText.frame.origin.y + 50, width: width - 85, height: 40)
+        loginButton.frame = CGRect(x: 15, y: passwordLabel.frame.origin.y + 60, width: width - 30, height: 40)
+        forgetPassword.frame = CGRect(x: 15, y: loginButton.frame.origin.y + 50, width: 80, height: 20)
+        signup.frame = CGRect(x: width - 95, y: loginButton.frame.origin.y + 50, width: 80, height: 20)
     }
     
     /////////////////////////////////////////////////////////////////////////////////
@@ -89,6 +102,25 @@ class LoginVC: UIViewController {
     }
     
     /////////////////////////////////////////////////////////////////////////////////
+    // MARK: 修改密码Segue
+    /////////////////////////////////////////////////////////////////////////////////
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let popoverCtrl = segue.destination.popoverPresentationController
+        
+        if sender is UIButton {
+            popoverCtrl?.sourceRect = (sender as! UIButton).bounds
+        }
+        
+        popoverCtrl?.delegate = self
+        popoverCtrl?.permittedArrowDirections = .down
+        popoverCtrl?.backgroundColor = UIColor.white
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////
     // MARK: 隐藏虚拟键盘
     /////////////////////////////////////////////////////////////////////////////////
     @objc func hideKeyboard() {
@@ -105,28 +137,4 @@ class LoginVC: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    /////////////////////////////////////////////////////////////////////////////////
-    // MARK: 十六进制颜色转化
-    /////////////////////////////////////////////////////////////////////////////////
-    func hexStringToUIColor(hex:String) -> UIColor {
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-        
-        if (cString.hasPrefix("#")) {
-            cString.remove(at: cString.startIndex)
-        }
-        
-        if ((cString.count) != 6) {
-            return UIColor.gray
-        }
-        
-        var rgbValue:UInt32 = 0
-        Scanner(string: cString).scanHexInt32(&rgbValue)
-        
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
 }

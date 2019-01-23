@@ -10,6 +10,8 @@
 		4E9EA1CD1FF174EFD8B70774 /* Pods_Gentleman.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056DE00765C1707AF40FD549 /* Pods_Gentleman.framework */; };
 		AD0300C421EEFA6B003E4E3A /* TextCounterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0300C321EEFA6B003E4E3A /* TextCounterLabel.swift */; };
 		AD0300C721EF1477003E4E3A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0300C621EF1477003E4E3A /* HomeViewController.swift */; };
+		AD0300F121F611EA003E4E3A /* LoginBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AD0300F021F611E9003E4E3A /* LoginBackground.jpg */; };
+		AD0300F421F61C42003E4E3A /* Pacifico.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD0300F321F61C42003E4E3A /* Pacifico.ttf */; };
 		AD68F19321EA37870035CD81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD68F19221EA37870035CD81 /* AppDelegate.swift */; };
 		AD68F19821EA37880035CD81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD68F19621EA37880035CD81 /* Main.storyboard */; };
 		AD68F19A21EA378B0035CD81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD68F19921EA378B0035CD81 /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 		056DE00765C1707AF40FD549 /* Pods_Gentleman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gentleman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD0300C321EEFA6B003E4E3A /* TextCounterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCounterLabel.swift; sourceTree = "<group>"; };
 		AD0300C621EF1477003E4E3A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		AD0300F021F611E9003E4E3A /* LoginBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = LoginBackground.jpg; path = ../../../LoginBackground.jpg; sourceTree = "<group>"; };
+		AD0300F321F61C42003E4E3A /* Pacifico.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pacifico.ttf; sourceTree = "<group>"; };
 		AD68F18F21EA37870035CD81 /* Gentleman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gentleman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD68F19221EA37870035CD81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD68F19721EA37880035CD81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -57,12 +61,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AD0300C521EEFA72003E4E3A /* Model */ = {
+		AD0300C521EEFA72003E4E3A /* Functional Model */ = {
 			isa = PBXGroup;
 			children = (
 				AD0300C321EEFA6B003E4E3A /* TextCounterLabel.swift */,
 			);
-			path = Model;
+			path = "Functional Model";
 			sourceTree = "<group>";
 		};
 		AD68F18621EA37870035CD81 = {
@@ -89,11 +93,12 @@
 				AD68F19221EA37870035CD81 /* AppDelegate.swift */,
 				ADB53E1721EADF4A00A8ECB2 /* Gentleman-Bridging-Header.h */,
 				AD0300C621EF1477003E4E3A /* HomeViewController.swift */,
-				AD0300C521EEFA72003E4E3A /* Model */,
+				AD0300C521EEFA72003E4E3A /* Functional Model */,
 				ADB53E1D21EAE51300A8ECB2 /* Login and Signup */,
 				AD68F19621EA37880035CD81 /* Main.storyboard */,
 				AD68F19921EA378B0035CD81 /* Assets.xcassets */,
 				AD68F19B21EA378B0035CD81 /* LaunchScreen.storyboard */,
+				AD0300F321F61C42003E4E3A /* Pacifico.ttf */,
 				AD68F19E21EA378B0035CD81 /* Info.plist */,
 			);
 			path = Gentleman;
@@ -103,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				ADB53E1B21EAE50A00A8ECB2 /* LoginVC.swift */,
+				AD0300F021F611E9003E4E3A /* LoginBackground.jpg */,
 				ADB53E1E21EAE53200A8ECB2 /* SignupVC.swift */,
 				ADB53E2021EAE55500A8ECB2 /* ResetPasswordVC.swift */,
 			);
@@ -180,8 +186,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD68F19D21EA378B0035CD81 /* LaunchScreen.storyboard in Resources */,
+				AD0300F421F61C42003E4E3A /* Pacifico.ttf in Resources */,
 				AD68F19A21EA378B0035CD81 /* Assets.xcassets in Resources */,
 				AD68F19821EA37880035CD81 /* Main.storyboard in Resources */,
+				AD0300F121F611EA003E4E3A /* LoginBackground.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

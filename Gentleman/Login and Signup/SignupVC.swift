@@ -6,11 +6,12 @@ import SVProgressHUD
 
 class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet weak var avaImage: UIImageView!
+    @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var nicknameText: UITextField!
-    @IBOutlet weak var cellphoneText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var confirmPasswordText: UITextField!
@@ -19,6 +20,7 @@ class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
 
+    let appDelegateSource = UIApplication.shared.delegate as! AppDelegate
     var keyboard : CGRect = CGRect()            //获取虚拟键盘的大小
     
     /////////////////////////////////////////////////////////////////////////////////
@@ -42,9 +44,11 @@ class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         avaImage.isUserInteractionEnabled = true
         avaImage.addGestureRecognizer(imgTap)
         
-        // TODO: 页面修饰与布局
+        // TODO: 页面修饰与布局        
         signupButton.layer.cornerRadius = signupButton.frame.height / 6
+        signupButton.backgroundColor = appDelegateSource.hexStringToUIColor(hex: "1D97C1")
         cancelButton.layer.cornerRadius = cancelButton.frame.height / 6
+        cancelButton.backgroundColor = appDelegateSource.hexStringToUIColor(hex: "4A4A48")
         bioText.layer.cornerRadius = bioText.frame.height / 20
         avaImage.layer.cornerRadius = avaImage.frame.width / 2
         avaImage.clipsToBounds = true
@@ -53,7 +57,6 @@ class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         bioText.maxLength = 60
         bioText.placeholderColor = UIColor.lightGray
         bioText.trimWhiteSpaceWhenEndEditing = true
-        
         counter.textView = bioText
         counter.counterMode = .standard
         counter.counterMaxLength = 60
@@ -66,18 +69,18 @@ class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         scrollview.frame = CGRect(x: 0, y: 0, width: width, height: height)
         scrollview.contentSize.height = height
         
-        avaImage.frame = CGRect(x: width / 2 - 40, y: 80, width: 80, height: 80)
-        usernameText.frame = CGRect(x: 15, y: avaImage.frame.origin.y + 100, width: width - 30, height: 30)
+        backgroundImage.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        avaImage.frame = CGRect(x: 15, y: 80, width: 80, height: 80)
+        greetingLabel.frame = CGRect(x: 15, y: avaImage.frame.origin.y + 90, width: width - 30, height: 40)
+        usernameText.frame = CGRect(x: 15, y: greetingLabel.frame.origin.y + 60, width: width - 30, height: 30)
         nicknameText.frame = CGRect(x: 15, y: usernameText.frame.origin.y + 40, width: width - 30, height: 30)
-        cellphoneText.frame = CGRect(x: 15, y: nicknameText.frame.origin.y + 40, width: width - 30, height: 30)
-        emailText.frame = CGRect(x: 15, y: cellphoneText.frame.origin.y + 40, width: width - 30, height: 30)
+        emailText.frame = CGRect(x: 15, y: nicknameText.frame.origin.y + 40, width: width - 30, height: 30)
         passwordText.frame = CGRect(x: 15, y: emailText.frame.origin.y + 40, width: width - 30, height: 30)
         confirmPasswordText.frame = CGRect(x: 15, y: passwordText.frame.origin.y + 40, width: width - 30, height: 30)
         bioText.frame = CGRect(x: 15, y: confirmPasswordText.frame.origin.y + 40, width: width - 30, height: 120)
         counter.frame = CGRect(x: width - 70, y: bioText.frame.origin.y + 100, width: 45, height: 20)
-        signupButton.frame = CGRect(x: 15, y: bioText.frame.origin.y + 135, width: 150, height: 30)
-        cancelButton.frame = CGRect(x: width - 165, y: bioText.frame.origin.y + 135, width: 150, height: 30)
-        
+        cancelButton.frame = CGRect(x: 15, y: bioText.frame.origin.y + 135, width: 150, height: 30)
+        signupButton.frame = CGRect(x: width - 165, y: bioText.frame.origin.y + 135, width: 150, height: 30)
     }
     
     /////////////////////////////////////////////////////////////////////////////////
@@ -127,11 +130,6 @@ class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
     
-    func validatePhoneNumber(number: String) -> Bool {
-        let phoneRegex = "0?(13|14|15|18)[0-9]{9}"
-        return NSPredicate(format: "SELF MATCHES %@", phoneRegex).evaluate(with: number)
-    }
-    
     /////////////////////////////////////////////////////////////////////////////////
     // MARK: 点击确认按钮
     /////////////////////////////////////////////////////////////////////////////////
@@ -139,7 +137,7 @@ class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         self.view.endEditing(true)
         
         // TODO: 检查信息是否完整
-        if usernameText.text!.isEmpty || nicknameText.text!.isEmpty || cellphoneText.text!.isEmpty || emailText.text!.isEmpty || passwordText.text!.isEmpty || confirmPasswordText.text!.isEmpty {
+        if usernameText.text!.isEmpty || nicknameText.text!.isEmpty || emailText.text!.isEmpty || passwordText.text!.isEmpty || confirmPasswordText.text!.isEmpty {
             alert(error: "注意", message: "信息不完整，请重新填写您的信息！")
             return
         }
@@ -176,11 +174,6 @@ class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         }
         
         // TODO: 检查手机号和邮箱
-        if !validatePhoneNumber(number: cellphoneText.text!) {
-            alert(error: "手机号错误", message: "请输入格式正确的手机号！")
-            return
-        }
-
         if !validateEmail(email: emailText.text!) {
             alert(error: "电子邮箱错误", message: "请输入格式正确的电子邮箱！")
             return
@@ -198,8 +191,6 @@ class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         let user = AVUser()
         user.username = usernameText.text?.uppercased()
         user["nickname"] = nicknameText.text
-        //user.mobilePhoneNumber = cellphoneText.text
-        user["cellPhone"] = cellphoneText.text
         user.email = emailText.text?.lowercased()
         user.password = confirmPasswordText.text
         user["bio"] = bioText.text

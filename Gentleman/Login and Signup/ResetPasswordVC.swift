@@ -5,16 +5,19 @@ import AVOSCloudIM
 class ResetPasswordVC: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    
+    let appDelegateSource = UIApplication.shared.delegate as! AppDelegate
     
     /////////////////////////////////////////////////////////////////////////////////
     // MARK: 屏幕初始化
     /////////////////////////////////////////////////////////////////////////////////
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         // TODO: 添加Tap手势
         let keyboardTap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardTap))
         keyboardTap.numberOfTapsRequired = 1
@@ -22,14 +25,22 @@ class ResetPasswordVC: UIViewController {
         self.view.addGestureRecognizer(keyboardTap)
 
         // TODO: 页面修饰与布局
+        self.view.backgroundColor = UIColor.white
+        self.preferredContentSize.width = UIScreen.main.bounds.width - 20
+        self.preferredContentSize.height = 200
+        self.view.layer.cornerRadius = 5
         confirmButton.layer.cornerRadius = confirmButton.frame.height / 6
+        confirmButton.backgroundColor = appDelegateSource.hexStringToUIColor(hex: "1D97C1")
         cancelButton.layer.cornerRadius = cancelButton.frame.height / 6
+        cancelButton.backgroundColor = appDelegateSource.hexStringToUIColor(hex: "4A4A48")
         
-        let width = self.view.frame.width
-        titleLabel.frame = CGRect(x: 15, y: 40, width: width - 30, height: 30)
-        emailTextField.frame = CGRect(x: 15, y: titleLabel.frame.origin.y + 40, width: width - 30, height: 30)
-        confirmButton.frame = CGRect(x: 15, y: emailTextField.frame.origin.y + 45, width: 150, height: 30)
-        cancelButton.frame = CGRect(x: width - 165, y: emailTextField.frame.origin.y + 45, width: 150, height: 30)
+        let width = self.preferredContentSize.width
+        
+        titleLabel.frame = CGRect(x: 15, y: 15, width: width - 30, height: 30)
+        instructionLabel.frame = CGRect(x: 15, y: titleLabel.frame.origin.y + 35, width: width - 30, height: 30)
+        emailTextField.frame = CGRect(x: 15, y: instructionLabel.frame.origin.y + 40, width: width - 30, height: 40)
+        cancelButton.frame = CGRect(x: 15, y: emailTextField.frame.origin.y + 55, width: width / 2 - 50, height: 40)
+        confirmButton.frame = CGRect(x: width / 2 + 35, y: emailTextField.frame.origin.y + 55, width: width / 2 - 50, height: 40)
     }
     
     /////////////////////////////////////////////////////////////////////////////////
