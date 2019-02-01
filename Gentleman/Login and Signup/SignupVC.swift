@@ -44,7 +44,7 @@ class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         avaImage.isUserInteractionEnabled = true
         avaImage.addGestureRecognizer(imgTap)
         
-        // TODO: 页面修饰与布局        
+        // TODO: 页面修饰
         signupButton.layer.cornerRadius = signupButton.frame.height / 6
         signupButton.backgroundColor = appDelegateSource.hexStringToUIColor(hex: "1D97C1")
         cancelButton.layer.cornerRadius = cancelButton.frame.height / 6
@@ -53,7 +53,7 @@ class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         avaImage.layer.cornerRadius = avaImage.frame.width / 2
         avaImage.clipsToBounds = true
         
-        bioText.placeholder = "自我介绍（60字以内）"
+        bioText.placeholder = "个性签名（60字以内）"
         bioText.maxLength = 60
         bioText.placeholderColor = UIColor.lightGray
         bioText.trimWhiteSpaceWhenEndEditing = true
@@ -62,25 +62,7 @@ class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         counter.counterMaxLength = 60
         counter.textColor = UIColor.lightGray
         
-        let width = self.view.frame.width
-        let height = self.view.frame.height
-        
-        // 滚动视图
-        scrollview.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        scrollview.contentSize.height = height
-        
-        backgroundImage.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        avaImage.frame = CGRect(x: 15, y: 80, width: 80, height: 80)
-        greetingLabel.frame = CGRect(x: 15, y: avaImage.frame.origin.y + 90, width: width - 30, height: 40)
-        usernameText.frame = CGRect(x: 15, y: greetingLabel.frame.origin.y + 60, width: width - 30, height: 30)
-        nicknameText.frame = CGRect(x: 15, y: usernameText.frame.origin.y + 40, width: width - 30, height: 30)
-        emailText.frame = CGRect(x: 15, y: nicknameText.frame.origin.y + 40, width: width - 30, height: 30)
-        passwordText.frame = CGRect(x: 15, y: emailText.frame.origin.y + 40, width: width - 30, height: 30)
-        confirmPasswordText.frame = CGRect(x: 15, y: passwordText.frame.origin.y + 40, width: width - 30, height: 30)
-        bioText.frame = CGRect(x: 15, y: confirmPasswordText.frame.origin.y + 40, width: width - 30, height: 120)
-        counter.frame = CGRect(x: width - 70, y: bioText.frame.origin.y + 100, width: 45, height: 20)
-        cancelButton.frame = CGRect(x: 15, y: bioText.frame.origin.y + 135, width: 150, height: 30)
-        signupButton.frame = CGRect(x: width - 165, y: bioText.frame.origin.y + 135, width: 150, height: 30)
+        alignment()
     }
     
     /////////////////////////////////////////////////////////////////////////////////
@@ -267,4 +249,27 @@ class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         self.present(alert, animated: true, completion: nil)
     }
 
+    /////////////////////////////////////////////////////////////////////////////////
+    // MARK: 页面布局
+    /////////////////////////////////////////////////////////////////////////////////
+    func alignment() {
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        
+        scrollview.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        scrollview.contentSize.height = height
+        
+        backgroundImage.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        avaImage.frame = CGRect(x: 15, y: 80, width: 80, height: 80)
+        greetingLabel.frame = CGRect(x: 15, y: avaImage.frame.origin.y + 90, width: width - 30, height: 40)
+        usernameText.frame = CGRect(x: 15, y: greetingLabel.frame.origin.y + 60, width: width - 30, height: 30)
+        nicknameText.frame = CGRect(x: 15, y: usernameText.frame.origin.y + 40, width: width - 30, height: 30)
+        emailText.frame = CGRect(x: 15, y: nicknameText.frame.origin.y + 40, width: width - 30, height: 30)
+        passwordText.frame = CGRect(x: 15, y: emailText.frame.origin.y + 40, width: width - 30, height: 30)
+        confirmPasswordText.frame = CGRect(x: 15, y: passwordText.frame.origin.y + 40, width: width - 30, height: 30)
+        bioText.frame = CGRect(x: 15, y: confirmPasswordText.frame.origin.y + 40, width: width - 30, height: 120)
+        counter.frame = CGRect(x: width - 60, y: bioText.frame.origin.y + 100, width: 45, height: 20)
+        cancelButton.frame = CGRect(x: 15, y: bioText.frame.origin.y + 135, width: 150, height: 30)
+        signupButton.frame = CGRect(x: width - 165, y: bioText.frame.origin.y + 135, width: 150, height: 30)
+    }
 }

@@ -2,7 +2,7 @@ import UIKit
 import AVOSCloud
 import AVOSCloudIM
 
-class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class GuestMediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var refresher = UIRefreshControl()
     var postPerPage: Int = 12
@@ -14,7 +14,7 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
     /////////////////////////////////////////////////////////////////////////////////
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.collectionView.alwaysBounceVertical = true     //允许垂直的拉拽刷新动作
         
         //设置refresher控件到CollectionView中
@@ -30,7 +30,7 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
         
         loadPosts()
     }
-
+    
     /////////////////////////////////////////////////////////////////////////////////
     // MARK: 设置单元格布局
     /////////////////////////////////////////////////////////////////////////////////
@@ -39,7 +39,7 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
         let size = CGSize(width: (self.view.frame.width - 2) / 3, height: (self.view.frame.width - 2) / 3)
         return size
     }
-
+    
     //同一行Cell 之间的间距
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1
@@ -53,8 +53,8 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
     //设置Collection中单元格个数
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return mediaArray.count == 0 ? 0:30
-        //return mediaArray.count
+        //return mediaArray.count == 0 ? 0:30
+        return mediaArray.count
     }
     
     //配置单元格
@@ -62,8 +62,8 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MediaCell", for: indexPath) as! MediaCollectionCell
         
-        mediaArray[0].getDataInBackground { (data: Data?, error: Error?) in
-        //mediaArray[indexPath.row].getDataInBackground { (data: Data?, error: Error?) in
+        //mediaArray[0].getDataInBackground { (data: Data?, error: Error?) in
+        mediaArray[indexPath.row].getDataInBackground { (data: Data?, error: Error?) in
             if error == nil {
                 cell.mediaImage.image = UIImage(data: data!)
             }
@@ -80,7 +80,7 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
     /////////////////////////////////////////////////////////////////////////////////
     func loadPosts() {
         let query = AVQuery(className: "Posts")
-        query.whereKey("username", equalTo: AVUser.current()!.username!)  //注意：这里有改动current()？.username
+        query.whereKey("username", equalTo: guestArray.last!.username!)  //注意：这里有改动current()？.username
         query.limit = postPerPage
         query.addDescendingOrder("createdAt")
         query.findObjectsInBackground { (objects: [Any]?, error: Error?) in
@@ -90,7 +90,7 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
                 self.mediaArray.removeAll(keepingCapacity: false)
                 
                 for object in objects! {
-                    //将查询到的数据x添加到数组中
+                    //将查询到的数据添加到数组中
                     self.postIdArray.append((object as AnyObject).value(forKey: "postId") as! String)
                     self.mediaArray.append((object as AnyObject).value(forKey: "media") as! AVFile)
                 }
@@ -99,7 +99,7 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
                 self.refresher.endRefreshing()
             }
             else {
-                print(error?.localizedDescription ?? "对象查找错误！")
+                print("无法获取访客帖子信息！")
             }
         }
     }
@@ -128,4 +128,5 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
         //停止动画刷新
         refresher.endRefreshing()
     }
+    
 }

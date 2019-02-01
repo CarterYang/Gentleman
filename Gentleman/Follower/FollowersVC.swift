@@ -18,10 +18,10 @@ class FollowersVC: UITableViewController {
         // TODO: 相关设置
         self.navigationItem.title = show
         
-        if show == "Followers" {
+        if show == "粉丝" {
             loadFollowers()
         }
-        else if show == "Followings"{
+        else if show == "关注"{
             loadFollowings()
         }
         else {
@@ -30,6 +30,8 @@ class FollowersVC: UITableViewController {
         
         tableView.rowHeight = 80
         tableView.separatorStyle = .none
+        
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,8 +51,8 @@ class FollowersVC: UITableViewController {
         //关注信息
         cell.usernameLabel.text = followArray[indexPath.row].username
         cell.nicknameLabel.text = followArray[indexPath.row].object(forKey: "nickname") as? String
-        let profileImage = followArray[indexPath.row].object(forKey: "profileImage") as! AVFile
-        profileImage.getDataInBackground { (data: Data?, error: Error?) in
+        let avaImage = followArray[indexPath.row].object(forKey: "avaImage") as! AVFile
+        avaImage.getDataInBackground { (data: Data?, error: Error?) in
             if error == nil {
                 cell.avaImage.image = UIImage(data: data!)
             }
@@ -122,7 +124,7 @@ class FollowersVC: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath) as! FollowersCell
         
         if cell.usernameLabel.text == AVUser.current()?.username {
-            let home = storyboard?.instantiateViewController(withIdentifier: "PersonalVC") as! HomeViewController
+            let home = storyboard?.instantiateViewController(withIdentifier: "PersonalVC") as! PersonalVC
             self.navigationController?.pushViewController(home, animated: true)
         }
         else {

@@ -23,18 +23,7 @@ class FollowersCell: UITableViewCell {
         avaImage.clipsToBounds = true
         followButton.layer.cornerRadius = followButton.frame.height / 6
         
-        // TODO: 页面布局
-        avaImage.translatesAutoresizingMaskIntoConstraints = false
-        usernameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nicknameLabel.translatesAutoresizingMaskIntoConstraints = false
-        followButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[ava(60)]-10-|", options: [], metrics: nil, views: ["ava": avaImage]))
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[username(35)]-0-[nickname(20)]-15-|", options: [], metrics: nil, views: ["username": usernameLabel, "nickname": nicknameLabel]))
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-25-[follow(30)]-25-|", options: [], metrics: nil, views: ["follow": followButton]))
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[ava(60)]-5-[username]-5-[follow(50)]-10-|", options: [], metrics: nil, views: ["ava": avaImage, "username": usernameLabel, "follow": followButton]))
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[ava(60)]-5-[nickname]-5-[follow(50)]-10-|", options: [], metrics: nil, views: ["ava": avaImage, "nickname": nicknameLabel, "follow": followButton]))
-        
+        alignment()
     }
 
     ////////////////////////////////////////////////////////////////////////////////
@@ -54,7 +43,7 @@ class FollowersCell: UITableViewCell {
                     //发送notification
 //                    let newsObj = AVObject(className: "News")
 //                    newsObj["by"] = AVUser.current()?.username
-//                    newsObj["profileImage"] = AVUser.current()?.object(forKey: "profileImage") as! AVFile
+//                    newsObj["avaImage"] = AVUser.current()?.object(forKey: "avaImage") as! AVFile
 //                    newsObj["to"] = self.usernameLabel.text
 //                    newsObj["owner"] = ""
 //                    newsObj["postId"] = ""
@@ -93,5 +82,21 @@ class FollowersCell: UITableViewCell {
                 }
             })
         }
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////
+    // MARK: 页面布局
+    /////////////////////////////////////////////////////////////////////////////////
+    func alignment() {
+        avaImage.translatesAutoresizingMaskIntoConstraints = false
+        usernameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nicknameLabel.translatesAutoresizingMaskIntoConstraints = false
+        followButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[ava(60)]-10-|", options: [], metrics: nil, views: ["ava": avaImage]))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[username(35)]-0-[nickname(20)]-15-|", options: [], metrics: nil, views: ["username": usernameLabel, "nickname": nicknameLabel]))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-25-[follow(30)]-25-|", options: [], metrics: nil, views: ["follow": followButton]))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[ava(60)]-5-[username]-5-[follow(50)]-10-|", options: [], metrics: nil, views: ["ava": avaImage, "username": usernameLabel, "follow": followButton]))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[ava(60)]-5-[nickname]-5-[follow(50)]-10-|", options: [], metrics: nil, views: ["ava": avaImage, "nickname": nicknameLabel, "follow": followButton]))
     }
 }

@@ -56,14 +56,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = myTabBar
         }
         
-        //        AVUser.current()?.follow("5c1c28f59f545400706a733c") {(success: Bool, error: Error?) in
-        //            if success {
-        //                print("关注成功")
-        //            }
-        //            else {
-        //                print("关注失败")
-        //            }
-        //        }
+//                AVUser.current()?.follow("5c4c88d444d904004d86f6d4") {(success: Bool, error: Error?) in
+//                    if success {
+//                        print("关注成功")
+//                    }
+//                    else {
+//                        print("关注失败")
+//                    }
+//                }
     }
 
     /////////////////////////////////////////////////////////////////////////////////

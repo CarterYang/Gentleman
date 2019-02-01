@@ -24,7 +24,7 @@ class ResetPasswordVC: UIViewController {
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(keyboardTap)
 
-        // TODO: 页面修饰与布局
+        // TODO: 页面修饰
         self.view.backgroundColor = UIColor.white
         self.preferredContentSize.width = UIScreen.main.bounds.width - 20
         self.preferredContentSize.height = 200
@@ -34,13 +34,7 @@ class ResetPasswordVC: UIViewController {
         cancelButton.layer.cornerRadius = cancelButton.frame.height / 6
         cancelButton.backgroundColor = appDelegateSource.hexStringToUIColor(hex: "4A4A48")
         
-        let width = self.preferredContentSize.width
-        
-        titleLabel.frame = CGRect(x: 15, y: 15, width: width - 30, height: 30)
-        instructionLabel.frame = CGRect(x: 15, y: titleLabel.frame.origin.y + 35, width: width - 30, height: 30)
-        emailTextField.frame = CGRect(x: 15, y: instructionLabel.frame.origin.y + 40, width: width - 30, height: 40)
-        cancelButton.frame = CGRect(x: 15, y: emailTextField.frame.origin.y + 55, width: width / 2 - 50, height: 40)
-        confirmButton.frame = CGRect(x: width / 2 + 35, y: emailTextField.frame.origin.y + 55, width: width / 2 - 50, height: 40)
+        alignment()
     }
     
     /////////////////////////////////////////////////////////////////////////////////
@@ -111,4 +105,16 @@ class ResetPasswordVC: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
+    /////////////////////////////////////////////////////////////////////////////////
+    // MARK: 页面布局
+    /////////////////////////////////////////////////////////////////////////////////
+    func alignment() {
+        let width = self.preferredContentSize.width
+        
+        titleLabel.frame = CGRect(x: 15, y: 15, width: width - 30, height: 30)
+        instructionLabel.frame = CGRect(x: 15, y: titleLabel.frame.origin.y + 35, width: width - 30, height: 30)
+        emailTextField.frame = CGRect(x: 15, y: instructionLabel.frame.origin.y + 40, width: width - 30, height: 40)
+        cancelButton.frame = CGRect(x: 15, y: emailTextField.frame.origin.y + 55, width: width / 2 - 50, height: 40)
+        confirmButton.frame = CGRect(x: width / 2 + 35, y: emailTextField.frame.origin.y + 55, width: width / 2 - 50, height: 40)
+    }
 }

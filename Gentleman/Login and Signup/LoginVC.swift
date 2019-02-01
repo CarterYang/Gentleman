@@ -36,21 +36,8 @@ class LoginVC: UIViewController, UIPopoverPresentationControllerDelegate {
         instructionLabel.isUserInteractionEnabled = false
         loginButton.layer.cornerRadius = loginButton.frame.height / 6
         loginButton.backgroundColor = appDelegateSource.hexStringToUIColor(hex: "1D97C1")
-                
-        // TODO: 页面布局
-        let width = self.view.frame.width
-        let height = self.view.frame.height
         
-        backgroundImage.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        titleLabel.frame = CGRect(x: 15, y: 100, width: width - 30, height: 50)
-        instructionLabel.frame = CGRect(x: 15, y: titleLabel.frame.origin.y + 100, width: width - 30, height: 40)
-        accountLabel.frame = CGRect(x: 15, y: instructionLabel.frame.origin.y + 60, width: 50, height: 40)
-        usernameText.frame = CGRect(x: 70, y: instructionLabel.frame.origin.y + 60, width: width - 85, height: 40)
-        passwordLabel.frame = CGRect(x: 15, y: accountLabel.frame.origin.y + 50, width: 50, height: 40)
-        passwordText.frame = CGRect(x: 70, y: usernameText.frame.origin.y + 50, width: width - 85, height: 40)
-        loginButton.frame = CGRect(x: 15, y: passwordLabel.frame.origin.y + 60, width: width - 30, height: 40)
-        forgetPassword.frame = CGRect(x: 15, y: loginButton.frame.origin.y + 50, width: 80, height: 20)
-        signup.frame = CGRect(x: width - 95, y: loginButton.frame.origin.y + 50, width: 80, height: 20)
+        alignment()
     }
     
     /////////////////////////////////////////////////////////////////////////////////
@@ -137,4 +124,22 @@ class LoginVC: UIViewController, UIPopoverPresentationControllerDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
+    /////////////////////////////////////////////////////////////////////////////////
+    // MARK: 页面布局
+    /////////////////////////////////////////////////////////////////////////////////
+    func alignment() {
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        
+        backgroundImage.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        titleLabel.frame = CGRect(x: 15, y: 100, width: width - 30, height: 50)
+        instructionLabel.frame = CGRect(x: 15, y: titleLabel.frame.origin.y + 100, width: width - 30, height: 40)
+        accountLabel.frame = CGRect(x: 15, y: instructionLabel.frame.origin.y + 60, width: 50, height: 40)
+        usernameText.frame = CGRect(x: 70, y: instructionLabel.frame.origin.y + 60, width: width - 85, height: 40)
+        passwordLabel.frame = CGRect(x: 15, y: accountLabel.frame.origin.y + 50, width: 50, height: 40)
+        passwordText.frame = CGRect(x: 70, y: usernameText.frame.origin.y + 50, width: width - 85, height: 40)
+        loginButton.frame = CGRect(x: 15, y: passwordLabel.frame.origin.y + 60, width: width - 30, height: 40)
+        forgetPassword.frame = CGRect(x: 15, y: loginButton.frame.origin.y + 50, width: 80, height: 20)
+        signup.frame = CGRect(x: width - 95, y: loginButton.frame.origin.y + 50, width: 80, height: 20)
+    }
 }

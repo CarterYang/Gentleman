@@ -5,6 +5,7 @@ class ContainTabBar: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tabBar.isTranslucent = false
     }
 
     override func viewWillLayoutSubviews() {
