@@ -34,16 +34,6 @@ class PersonalVC: UIViewController {
         avaImage.layer.cornerRadius = avaImage.frame.width / 2
         avaImage.clipsToBounds = true
         editButton.backgroundColor = appDelegateSource.hexStringToUIColor(hex: "1D97C1")
-//        nicknameLabel.backgroundColor = .red
-//        likeNum.backgroundColor = .red
-//        likeLabel.backgroundColor = .green
-//        postNum.backgroundColor = .red
-//        postLabel.backgroundColor = .green
-//        followingNum.backgroundColor = .red
-//        followingLabel.backgroundColor = .green
-//        followerNum.backgroundColor = .red
-//        followerLabel.backgroundColor = .green
-//        bioLabel.backgroundColor = .red
         
         // TODO: 添加手势
         let postsTap = UITapGestureRecognizer(target: self, action: #selector(postsTapAction))
@@ -78,19 +68,21 @@ class PersonalVC: UIViewController {
     func getInfo() {
         let currentUser = AVUser.current()!
         
-        let avaQuery = currentUser.object(forKey: "avaImage") as? AVFile
-        avaQuery?.getDataInBackground({ (data: Data?, error: Error?) in
-            if data == nil {
-                print("无法获取头像")
-            }
-            else {
+        //let avaquery = currentUser.object(forKey: "avaImage") as! AVFile
+        let avaquery = AVUser.current()?.object(forKey: "avaImage") as! AVFile
+        avaquery.getDataInBackground { (data: Data?, error: Error?) in
+            if error == nil {
                 self.avaImage.image = UIImage(data: data!)
             }
-        })
+            else {
+                //print(error?.localizedDescription)
+                print("下载头像出错-PersonalVC")
+            }
+        }
         
         nicknameLabel.text = currentUser.object(forKey: "nickname") as? String
         bioLabel.text = currentUser.object(forKey: "bio") as? String
-        bioLabel.sizeToFit() //调整试图大小为包裹所显示文字内容
+        //bioLabel.sizeToFit() //调整试图大小为包裹所显示文字内容
         
         //查找Like个数
         let likeCount = AVQuery(className: "Likes")
@@ -188,6 +180,17 @@ class PersonalVC: UIViewController {
     // MARK: 页面布局
     /////////////////////////////////////////////////////////////////////////////////
     func alignment() {
+        //        nicknameLabel.backgroundColor = .red
+        //        likeNum.backgroundColor = .red
+        //        likeLabel.backgroundColor = .green
+        //        postNum.backgroundColor = .red
+        //        postLabel.backgroundColor = .green
+        //        followingNum.backgroundColor = .red
+        //        followingLabel.backgroundColor = .green
+        //        followerNum.backgroundColor = .red
+        //        followerLabel.backgroundColor = .green
+                bioLabel.backgroundColor = .red
+        
         let width = self.view.frame.width
         avaImage.frame = CGRect(x: 15, y: 10, width: 90, height: 90)
         nicknameLabel.frame = CGRect(x: 120, y: 10, width: width - 125, height: 25)
@@ -202,15 +205,15 @@ class PersonalVC: UIViewController {
         followerNum.frame = CGRect(x: followingNum.frame.origin.x + xGap, y: nicknameLabel.frame.origin.y + 30, width: subWidth, height: 15)
         followerLabel.frame = CGRect(x: followingLabel.frame.origin.x + xGap, y: followerNum.frame.origin.y + 15, width: subWidth, height: 15)
         editButton.frame = CGRect(x: 120, y: followerLabel.frame.origin.y + 15, width: width - 125, height: 30)
-        //bioLabel.frame = CGRect(x: 15, y: avaImage.frame.origin.y + 90, width: width - 30, height: 80)
+        bioLabel.frame = CGRect(x: 15, y: avaImage.frame.origin.y + 100, width: width - 30, height: 80)
         //bioLabel.frame.size.width = width - 30
         //containerView.frame.size.width = width
         
-        bioLabel.translatesAutoresizingMaskIntoConstraints = false
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[avaImage]-10-[bioLabel]-10-[containerView]-0-|", options: [], metrics: nil, views: ["avaImage": avaImage, "bioLabel": bioLabel, "containerView": containerView]))
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-15-[bioLabel]-15-|", options: [], metrics: nil, views: ["bioLabel": bioLabel]))
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[containerView]-0-|", options: [], metrics: nil, views: ["containerView": containerView]))
+//        bioLabel.translatesAutoresizingMaskIntoConstraints = false
+//        containerView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[avaImage]-10-[bioLabel]-10-[containerView]-0-|", options: [], metrics: nil, views: ["avaImage": avaImage, "bioLabel": bioLabel, "containerView": containerView]))
+//        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-15-[bioLabel]-15-|", options: [], metrics: nil, views: ["bioLabel": bioLabel]))
+//        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[containerView]-0-|", options: [], metrics: nil, views: ["containerView": containerView]))
     }
 }

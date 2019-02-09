@@ -178,7 +178,7 @@ class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         user["bio"] = bioText.text
         
         let ava = UIImage.jpegData(avaImage.image!)(compressionQuality: 0.5)
-        let avaFile = AVFile(name: "avaImage.jpg", data: ava!)
+        let avaFile = AVFile(name: "ava.jpg", data: ava!)
         user["avaImage"] = avaFile
         
         // TODO: 上传数据

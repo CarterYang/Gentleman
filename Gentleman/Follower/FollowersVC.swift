@@ -97,7 +97,7 @@ class FollowersVC: UITableViewController {
                 self.tableView.reloadData()
             }
             else {
-                print("无法载入关注者信息！")
+                print("无法载入粉丝信息！")
             }
         })
     }
@@ -106,7 +106,7 @@ class FollowersVC: UITableViewController {
     // MARK: 载入Followings信息
     /////////////////////////////////////////////////////////////////////////////////
     func loadFollowings() {
-        guestArray.last?.getFollowers({ (followers: [Any]?, error: Error?) in
+        guestArray.last?.getFollowees({ (followers: [Any]?, error: Error?) in
             if error == nil && followers != nil {
                 self.followArray = followers! as! [AVUser]
                 self.tableView.reloadData()
