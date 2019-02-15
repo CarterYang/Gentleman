@@ -8,6 +8,7 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
     var postPerPage: Int = 12
     var postIdArray = [String]()
     var mediaArray = [AVFile]()
+    var heightMeasure = [CGFloat]()
     
     /////////////////////////////////////////////////////////////////////////////////
     // MARK: 屏幕初始化
@@ -53,7 +54,6 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
     //设置Collection中单元格个数
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        //return mediaArray.count == 0 ? 0:30
         return mediaArray.count
     }
     
@@ -62,10 +62,15 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MediaCell", for: indexPath) as! MediaCollectionCell
         
-        //mediaArray[0].getDataInBackground { (data: Data?, error: Error?) in
         mediaArray[indexPath.row].getDataInBackground { (data: Data?, error: Error?) in
             if error == nil {
                 cell.mediaImage.image = UIImage(data: data!)
+                
+                // 计算长宽比
+                let scale = UIImage(data: data!)!.size.width / UIImage(data: data!)!.size.height
+                let frameWidth = self.view.frame.width
+                let frameHeight = frameWidth / scale
+                self.heightMeasure.append(frameHeight)
             }
             else {
                 print("无法从PictureArray中提取图片！")
@@ -88,6 +93,7 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
                 //如果查询成功，清空两个Array
                 self.postIdArray.removeAll(keepingCapacity: false)
                 self.mediaArray.removeAll(keepingCapacity: false)
+                self.heightMeasure.removeAll(keepingCapacity: false)
                 
                 for object in objects! {
                     //将查询到的数据x添加到数组中
@@ -121,6 +127,21 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     /////////////////////////////////////////////////////////////////////////////////
+    // MARK: 点击图片进入PostVC
+    /////////////////////////////////////////////////////////////////////////////////
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //发送postId到PostVC中的postId数组中
+        postId.append(postIdArray[indexPath.row])
+        
+        //长宽比传送到PostVC
+        findHeight.append(heightMeasure[indexPath.row])
+        
+        //将页面转到PostViewController
+        let postVC = self.storyboard?.instantiateViewController(withIdentifier: "PostVC") as! PostVC
+        self.navigationController?.pushViewController(postVC, animated: true)
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////
     // MARK: 刷新页面
     /////////////////////////////////////////////////////////////////////////////////
     @objc func refresh() {
@@ -128,5 +149,4 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
         //停止动画刷新
         refresher.endRefreshing()
     }
-
 }

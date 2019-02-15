@@ -26,9 +26,6 @@ class PersonalVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let settingButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(setting))
-        self.navigationItem.rightBarButtonItem = settingButton
-        
         // TODO: 页面修饰
         self.navigationItem.title = AVUser.current()?.username
         avaImage.layer.cornerRadius = avaImage.frame.width / 2
@@ -171,9 +168,16 @@ class PersonalVC: UIViewController {
         self.navigationController?.pushViewController(followings, animated: true)
     }
 
+    /////////////////////////////////////////////////////////////////////////////////
+    // MARK: 单击”上传“后调用
+    /////////////////////////////////////////////////////////////////////////////////
+    @IBAction func upload(_ sender: Any) {
+    }
     
-    @objc func setting() {
-        
+    /////////////////////////////////////////////////////////////////////////////////
+    // MARK: 单击”设置“后调用
+    /////////////////////////////////////////////////////////////////////////////////
+    @IBAction func setting(_ sender: Any) {
     }
     
     /////////////////////////////////////////////////////////////////////////////////
@@ -204,7 +208,7 @@ class PersonalVC: UIViewController {
         followingLabel.frame = CGRect(x: postLabel.frame.origin.x + xGap, y: followingNum.frame.origin.y + 15, width: subWidth, height: 15)
         followerNum.frame = CGRect(x: followingNum.frame.origin.x + xGap, y: nicknameLabel.frame.origin.y + 30, width: subWidth, height: 15)
         followerLabel.frame = CGRect(x: followingLabel.frame.origin.x + xGap, y: followerNum.frame.origin.y + 15, width: subWidth, height: 15)
-        editButton.frame = CGRect(x: 120, y: followerLabel.frame.origin.y + 15, width: width - 125, height: 30)
+        editButton.frame = CGRect(x: 120, y: followerLabel.frame.origin.y + 15, width: width - 135, height: 30)
         bioLabel.frame = CGRect(x: 15, y: avaImage.frame.origin.y + 100, width: width - 30, height: 80)
         //bioLabel.frame.size.width = width - 30
         //containerView.frame.size.width = width

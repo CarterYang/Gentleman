@@ -20,7 +20,7 @@
 		AD11CC2621FA0CD400A3A914 /* FollowersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD11CC2521FA0CD400A3A914 /* FollowersVC.swift */; };
 		AD11CC2921FA0D5C00A3A914 /* FollowersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD11CC2821FA0D5C00A3A914 /* FollowersCell.swift */; };
 		AD4E05D5220ED160008610B8 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4E05D4220ED160008610B8 /* PostVC.swift */; };
-		AD4E05D8220ED1A6008610B8 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4E05D7220ED1A6008610B8 /* PostCell.swift */; };
+		AD4E05DA220ED31F008610B8 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4E05D9220ED31F008610B8 /* PostCell.swift */; };
 		AD68F19321EA37870035CD81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD68F19221EA37870035CD81 /* AppDelegate.swift */; };
 		AD68F19821EA37880035CD81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD68F19621EA37880035CD81 /* Main.storyboard */; };
 		AD68F19A21EA378B0035CD81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD68F19921EA378B0035CD81 /* Assets.xcassets */; };
@@ -47,7 +47,7 @@
 		AD11CC2521FA0CD400A3A914 /* FollowersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersVC.swift; sourceTree = "<group>"; };
 		AD11CC2821FA0D5C00A3A914 /* FollowersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersCell.swift; sourceTree = "<group>"; };
 		AD4E05D4220ED160008610B8 /* PostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
-		AD4E05D7220ED1A6008610B8 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		AD4E05D9220ED31F008610B8 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		AD68F18F21EA37870035CD81 /* Gentleman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gentleman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD68F19221EA37870035CD81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD68F19721EA37880035CD81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				AD4E05D4220ED160008610B8 /* PostVC.swift */,
-				AD4E05D7220ED1A6008610B8 /* PostCell.swift */,
+				AD4E05D9220ED31F008610B8 /* PostCell.swift */,
 			);
 			path = "Post Viewer";
 			sourceTree = "<group>";
@@ -322,7 +322,7 @@
 				AD11CC2221F99FDD00A3A914 /* MediaCollectionVC.swift in Sources */,
 				AD11CC2621FA0CD400A3A914 /* FollowersVC.swift in Sources */,
 				ADB53E1C21EAE50A00A8ECB2 /* LoginVC.swift in Sources */,
-				AD4E05D8220ED1A6008610B8 /* PostCell.swift in Sources */,
+				AD4E05DA220ED31F008610B8 /* PostCell.swift in Sources */,
 				AD68F19321EA37870035CD81 /* AppDelegate.swift in Sources */,
 				ADEBDB2E2202B29800E4ED89 /* GuestMediaCollectionVC.swift in Sources */,
 				ADEBDB302204462E00E4ED89 /* EditVC.swift in Sources */,

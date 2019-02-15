@@ -418,7 +418,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="l0O-CY-SYy"/>
                     </view>
-                    <navigationItem key="navigationItem" title="我的" id="WVz-Rc-iv0"/>
+                    <navigationItem key="navigationItem" title="我的" id="WVz-Rc-iv0">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="vDI-6N-6rD">
+                            <connections>
+                                <action selector="upload:" destination="sA4-Ry-WIA" id="O6d-nt-WgE"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="Ig3-PV-lBC">
+                            <connections>
+                                <action selector="setting:" destination="sA4-Ry-WIA" id="Q1D-Ek-MSn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="avaImage" destination="5pP-6P-WGb" id="O08-ii-fK8"/>
                         <outlet property="bioLabel" destination="zAL-c5-CQN" id="mz3-2O-rjR"/>
@@ -843,27 +854,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PostCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="514" id="JUV-PS-Y4k" customClass="PostCell" customModule="Gentleman" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PostCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="514" id="JUV-PS-Y4k" customClass="PostCell" customModule="Gentleman" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="514"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JUV-PS-Y4k" id="d1y-f4-gbA">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="513.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tM0-fT-B49">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AvaHolder" translatesAutoresizingMaskIntoConstraints="NO" id="tM0-fT-B49">
                                             <rect key="frame" x="16" y="11" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bDa-Ir-828">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ImageHolder" translatesAutoresizingMaskIntoConstraints="NO" id="bDa-Ir-828">
                                             <rect key="frame" x="0.0" y="49" width="375" height="375"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpH-YW-FU5">
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpH-YW-FU5">
                                             <rect key="frame" x="53" y="11" width="240" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button"/>
+                                            <state key="normal" title="Username"/>
+                                            <connections>
+                                                <action selector="usernameButtonPressed:" destination="zM3-gr-mdM" eventType="touchUpInside" id="Nfn-Ib-rNy"/>
+                                            </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SM-U2-G8V">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1d" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SM-U2-G8V">
                                             <rect key="frame" x="317" y="11" width="42" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -874,11 +888,17 @@
                                             <rect key="frame" x="10" y="432" width="23" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="Comment"/>
+                                            <connections>
+                                                <action selector="commentButtonPressed:" destination="zM3-gr-mdM" eventType="touchUpInside" id="8rs-tG-h4r"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6j-Gr-FKD">
                                             <rect key="frame" x="82" y="431" width="23" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="Like"/>
+                                            <connections>
+                                                <action selector="likeButtonPressed:" destination="JUV-PS-Y4k" eventType="touchUpInside" id="bP2-Nh-045"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1k" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ovs-4n-Hiv">
                                             <rect key="frame" x="41" y="431" width="17" height="21"/>
@@ -898,6 +918,9 @@
                                             <rect key="frame" x="343" y="432" width="25" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="More"/>
+                                            <connections>
+                                                <action selector="moreButtonPressed:" destination="zM3-gr-mdM" eventType="touchUpInside" id="jhc-o1-eG8"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RqH-WI-C4R">
                                             <rect key="frame" x="10" y="460" width="358" height="21"/>
@@ -906,7 +929,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h3-7I-L8l">
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h3-7I-L8l">
                                             <rect key="frame" x="0.0" y="49" width="375" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -915,6 +938,19 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avaImage" destination="tM0-fT-B49" id="vAv-s3-FcP"/>
+                                    <outlet property="commentButton" destination="UxF-3x-sP3" id="Suc-4S-Y12"/>
+                                    <outlet property="commentNum" destination="Ovs-4n-Hiv" id="eHk-6N-stX"/>
+                                    <outlet property="dateLabel" destination="6SM-U2-G8V" id="uZH-NS-Xsf"/>
+                                    <outlet property="likeButton" destination="h6j-Gr-FKD" id="nQn-Gs-KbL"/>
+                                    <outlet property="likeNum" destination="iLW-xp-7Lb" id="KBN-nb-kl6"/>
+                                    <outlet property="moreButton" destination="d5V-5v-hKX" id="WMM-Fq-OUQ"/>
+                                    <outlet property="postIdLabel" destination="7h3-7I-L8l" id="Apm-JA-l9A"/>
+                                    <outlet property="postImage" destination="bDa-Ir-828" id="Reb-cU-UNY"/>
+                                    <outlet property="titleLabel" destination="RqH-WI-C4R" id="hdQ-Lq-vqE"/>
+                                    <outlet property="usernameButton" destination="jpH-YW-FU5" id="Qz9-Xh-2AJ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1319,6 +1355,7 @@
         <image name="Comment" width="43" height="41"/>
         <image name="Favourite" width="36" height="36"/>
         <image name="Grid" width="36" height="36"/>
+        <image name="ImageHolder" width="840" height="600"/>
         <image name="Like" width="46" height="41"/>
         <image name="LoginBackground.jpg" width="564" height="846"/>
         <image name="Logout" width="25" height="25"/>
