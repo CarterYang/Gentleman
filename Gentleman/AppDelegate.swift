@@ -7,7 +7,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         AVOSCloud.setApplicationId("WsistOYipMEkdYH5iaDqxTTo-gzGzoHsz", clientKey: "9jgGV17SjJDIPD5VmCgL9xMr")

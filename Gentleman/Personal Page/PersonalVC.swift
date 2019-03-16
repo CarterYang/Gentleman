@@ -2,7 +2,7 @@ import UIKit
 import AVOSCloud
 import AVOSCloudIM
 
-class PersonalVC: UIViewController {
+class PersonalVC: UIViewController, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var avaImage: UIImageView!
     @IBOutlet weak var likeNum: UILabel!
@@ -47,6 +47,9 @@ class PersonalVC: UIViewController {
         followersTap.numberOfTapsRequired = 1
         followerNum.isUserInteractionEnabled = true
         followerNum.addGestureRecognizer(followersTap)
+        
+        //Notification Center
+        NotificationCenter.default.addObserver(self, selector: #selector(uploaded), name: NSNotification.Name(rawValue: "uploaded"), object: nil)
         
         alignment()
         getInfo()
@@ -167,11 +170,36 @@ class PersonalVC: UIViewController {
         
         self.navigationController?.pushViewController(followings, animated: true)
     }
-
+    
     /////////////////////////////////////////////////////////////////////////////////
-    // MARK: 单击”上传“后调用
+    // MARK: 单击”上传“后调用(修改密码Segue)
     /////////////////////////////////////////////////////////////////////////////////
-    @IBAction func upload(_ sender: Any) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let popoverCtrl = segue.destination.popoverPresentationController
+        
+        if sender is UIButton {
+            popoverCtrl?.sourceRect = (sender as! UIButton).bounds
+        }
+        else if sender is UIBarButtonItem {
+            popoverCtrl?.barButtonItem = sender as? UIBarButtonItem
+        }
+        
+        popoverCtrl?.delegate = self
+        popoverCtrl?.permittedArrowDirections = .up
+        popoverCtrl?.backgroundColor = UIColor.white
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////
+    // MARK: 刷新页面
+    /////////////////////////////////////////////////////////////////////////////////
+    @objc func uploaded() {
+        viewDidLoad()
+        //停止动画刷新
+        //refresher.endRefreshing()
     }
     
     /////////////////////////////////////////////////////////////////////////////////

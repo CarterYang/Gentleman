@@ -29,6 +29,9 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
         let tabBarHeight = self.tabBarController!.tabBar.frame.height
         self.collectionView.frame = CGRect(x: 0, y: tabBarHeight, width: width, height: height - tabBarHeight)
         
+        //Notification Center
+        NotificationCenter.default.addObserver(self, selector: #selector(uploaded), name: NSNotification.Name(rawValue: "uploaded"), object: nil)
+        
         loadPosts()
     }
 
@@ -148,5 +151,12 @@ class MediaCollectionVC: UICollectionViewController, UICollectionViewDelegateFlo
         self.collectionView.reloadData()
         //停止动画刷新
         refresher.endRefreshing()
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////
+    // MARK: 上传成功后重新载入帖子
+    /////////////////////////////////////////////////////////////////////////////////
+    @objc func uploaded() {
+        loadPosts()
     }
 }

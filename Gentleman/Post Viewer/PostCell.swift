@@ -1,9 +1,12 @@
 import UIKit
+import AVOSCloud
+import AVOSCloudIM
 
 class PostCell: UITableViewCell {
     
     @IBOutlet weak var avaImage: UIImageView!
     @IBOutlet weak var usernameButton: UIButton!
+    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var commentButton: UIButton!
@@ -59,6 +62,7 @@ class PostCell: UITableViewCell {
     /////////////////////////////////////////////////////////////////////////////////
     func alignment() {
         usernameButton.backgroundColor = .red
+        locationLabel.backgroundColor = .green
         dateLabel.backgroundColor = .red
         commentButton.backgroundColor = .red
         commentNum.backgroundColor = .green
@@ -71,6 +75,7 @@ class PostCell: UITableViewCell {
         
         avaImage.translatesAutoresizingMaskIntoConstraints = false
         usernameButton.translatesAutoresizingMaskIntoConstraints = false
+        locationLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         postImage.translatesAutoresizingMaskIntoConstraints = false
         commentButton.translatesAutoresizingMaskIntoConstraints = false
@@ -81,15 +86,16 @@ class PostCell: UITableViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         postIdLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[avaImage(30)]-10-[postImage(\(findHeight.last!))]-5-[commentButton(25)]-5-[titleLabel]-5-|", options: [], metrics: nil, views: ["avaImage": avaImage, "postImage": postImage, "commentButton": commentButton, "titleLabel": titleLabel]))
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[usernameButton(30)]", options: [], metrics: nil, views: ["usernameButton": usernameButton]))
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[dateLabel(30)]", options: [], metrics: nil, views: ["dateLabel": dateLabel]))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[avaImage(40)]-10-[postImage(\(findHeight.last!))]-5-[commentButton(25)]-5-[titleLabel]-5-|", options: [], metrics: nil, views: ["avaImage": avaImage, "postImage": postImage, "commentButton": commentButton, "titleLabel": titleLabel]))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[usernameButton(25)]-0-[locationLabel(15)]", options: [], metrics: nil, views: ["usernameButton": usernameButton, "locationLabel": locationLabel]))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[dateLabel(40)]", options: [], metrics: nil, views: ["dateLabel": dateLabel]))
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[postImage]-5-[commentNum(25)]", options: [], metrics: nil, views: ["postImage": postImage, "commentNum": commentNum]))
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[postImage]-5-[likeButton(25)]", options: [], metrics: nil, views: ["postImage": postImage, "likeButton": likeButton]))
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[postImage]-5-[likeNum(25)]", options: [], metrics: nil, views: ["postImage": postImage, "likeNum": likeNum]))
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[postImage]-5-[moreButton(25)]", options: [], metrics: nil, views: ["postImage": postImage, "moreButton": moreButton]))
 
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[avaImage(30)]-5-[usernameButton(\(width - 110))]-5-[dateLabel(50)]-10-|", options: [], metrics: nil, views: ["avaImage": avaImage, "usernameButton": usernameButton, "dateLabel": dateLabel]))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[avaImage(40)]-5-[usernameButton(\(width - 120))]-5-[dateLabel(50)]-10-|", options: [], metrics: nil, views: ["avaImage": avaImage, "usernameButton": usernameButton, "dateLabel": dateLabel]))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[avaImage]-5-[locationLabel(\(width - 120))]-5-[dateLabel]", options: [], metrics: nil, views: ["avaImage": avaImage, "locationLabel": locationLabel, "dateLabel": dateLabel]))
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[postImage]-0-|", options: [], metrics: nil, views: ["postImage": postImage]))
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[commentButton(25)]-0-[commentNum(50)]-5-[likeButton(25)]-0-[likeNum(50)]", options: [], metrics: nil, views: ["commentButton": commentButton, "commentNum": commentNum, "likeButton": likeButton, "likeNum": likeNum]))
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[moreButton(25)]-10-|", options: [], metrics: nil, views: ["moreButton": moreButton]))

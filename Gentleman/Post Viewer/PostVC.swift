@@ -1,4 +1,6 @@
 import UIKit
+import AVOSCloud
+import AVOSCloudIM
 
 var postId = [String]()
 var findHeight = [CGFloat]()
@@ -7,6 +9,7 @@ class PostVC: UITableViewController {
 
     var profileImageArray = [AVFile]()
     var usernameArray = [String]()
+    var locationArray = [String]()
     var dateArray = [Date]()
     var postImageArray = [AVFile]()
     var postIdArray = [String]()
@@ -38,6 +41,7 @@ class PostVC: UITableViewController {
             for object in objects! {
                 self.profileImageArray.append((object as AnyObject).value(forKey: "avaImage") as! AVFile)
                 self.usernameArray.append((object as AnyObject).value(forKey: "username") as! String)
+                self.locationArray.append((object as AnyObject).value(forKey: "location") as! String)
                 self.dateArray.append((object as AnyObject).createdAt!)
                 self.postImageArray.append((object as AnyObject).value(forKey: "media") as! AVFile)
                 self.postIdArray.append((object as AnyObject).value(forKey: "postId") as! String)
@@ -64,6 +68,7 @@ class PostVC: UITableViewController {
             cell.avaImage.image = UIImage(data: data!)
         }
         cell.usernameButton.setTitle(usernameArray[indexPath.row], for: .normal)
+        cell.locationLabel.text = locationArray[indexPath.row]
         cell.postIdLabel.text = postIdArray[indexPath.row]
         cell.titleLabel.text = titleArray[indexPath.row]
         cell.titleLabel.sizeToFit()

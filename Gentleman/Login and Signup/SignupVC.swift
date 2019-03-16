@@ -4,7 +4,7 @@ import AVOSCloudIM
 import GrowingTextView
 import SVProgressHUD
 
-class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class SignupVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var scrollview: UIScrollView!
