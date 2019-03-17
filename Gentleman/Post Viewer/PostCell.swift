@@ -61,15 +61,15 @@ class PostCell: UITableViewCell {
     // MARK: 页面布局
     /////////////////////////////////////////////////////////////////////////////////
     func alignment() {
-        usernameButton.backgroundColor = .red
-        locationLabel.backgroundColor = .green
-        dateLabel.backgroundColor = .red
-        commentButton.backgroundColor = .red
-        commentNum.backgroundColor = .green
-        likeButton.backgroundColor = .red
-        likeNum.backgroundColor = .green
-        titleLabel.backgroundColor = .red
-        postImage.backgroundColor = .red
+//        usernameButton.backgroundColor = .red
+//        locationLabel.backgroundColor = .green
+//        dateLabel.backgroundColor = .red
+//        commentButton.backgroundColor = .red
+//        commentNum.backgroundColor = .green
+//        likeButton.backgroundColor = .red
+//        likeNum.backgroundColor = .green
+//        titleLabel.backgroundColor = .red
+//        postImage.backgroundColor = .red
         
         let width = UIScreen.main.bounds.width
         

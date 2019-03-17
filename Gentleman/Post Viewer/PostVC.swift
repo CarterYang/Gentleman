@@ -24,7 +24,7 @@ class PostVC: UITableViewController {
         //动态单元格高度设置
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 550
-        //tableView.separatorStyle = .singleLine
+        tableView.separatorStyle = .singleLine
         
         //对指定pistId帖子的查询
         let postQuery = AVQuery(className: "Posts")
@@ -67,14 +67,14 @@ class PostVC: UITableViewController {
         profileImageArray[indexPath.row].getDataInBackground { (data: Data?, error: Error?) in
             cell.avaImage.image = UIImage(data: data!)
         }
+        postImageArray[indexPath.row].getDataInBackground { (data: Data?, error: Error?) in
+            cell.postImage.image = UIImage(data: data!)
+        }
         cell.usernameButton.setTitle(usernameArray[indexPath.row], for: .normal)
         cell.locationLabel.text = locationArray[indexPath.row]
         cell.postIdLabel.text = postIdArray[indexPath.row]
         cell.titleLabel.text = titleArray[indexPath.row]
         cell.titleLabel.sizeToFit()
-        postImageArray[indexPath.row].getDataInBackground { (data: Data?, error: Error?) in
-            cell.postImage.image = UIImage(data: data!)
-        }
 
         //配置时间
         let createdTime = dateArray[indexPath.row]
